@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom"
 import axios from "axios";
-export default function Main(){
+export default function MainPage(){
     const navigate = useNavigate();
     const logout = ()=>{
         console.log("Logout Logic 연결");

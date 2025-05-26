@@ -2,7 +2,7 @@ import { useSojuStore } from "../store/useSojuStore"
 import { useBeerStore } from "../store/useBeerStore"
 import { useNavigate } from "react-router-dom"
 
-export default function BottleInput(){
+export default function BottleInputPage(){
     const navigate = useNavigate();
     const sojuCount = useSojuStore((state) => state.sojuCount);
     const setSojuCount = useSojuStore((state) => state.setSojuCount);
