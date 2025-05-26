@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Main from './pages/Main'
+import Login from './pages/Login'
 import BottleInput from './pages/BottleInput'
 import QR from './pages/QR'
 
@@ -11,6 +12,7 @@ createRoot(document.getElementById('root')!).render(
     <BrowserRouter>
         <Routes>
           <Route path="/" element={<Main/>} />
+          <Route path="/login" element={<Login/>} />
           <Route path="/bottleinput" element={<BottleInput/>} />
           <Route path="/qr" element={<QR/>} />
         </Routes>
