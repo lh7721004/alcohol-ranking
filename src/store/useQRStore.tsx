@@ -1,6 +1,9 @@
 import { create } from 'zustand';
-
-export const useQRStore = create((set) => ({
+type QRStore = {
+    QRcode: string;
+    setQRcode: (count: string) => void;
+};
+export const useQRStore = create<QRStore>((set) => ({
     QRcode: "",
     setQRcode: (QRcode) => set({ QRcode }),
 }));

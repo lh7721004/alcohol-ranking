@@ -1,6 +1,11 @@
 import { create } from 'zustand';
 
-export const useSojuStore = create((set) => ({
+type SojuStore = {
+    sojuCount: number;
+    setSojuCount: (count: number) => void;
+};
+  
+export const useSojuStore = create<SojuStore>((set) => ({
     sojuCount: 0,
     setSojuCount: (sojuCount) => set({ sojuCount }),
 }));
