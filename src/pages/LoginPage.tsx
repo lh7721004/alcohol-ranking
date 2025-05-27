@@ -9,10 +9,10 @@ export default function LoginPage(){
     const apiUrl = import.meta.env.VITE_API_URL;
     const login = async () => {
         try {
-            const response = await axios.post(`${apiUrl}/login`, {
-                id:userName,
+            const response = await axios.post(`${apiUrl}/api/admin/login`, {
                 pw:password,
             },{withCredentials:true});
+            
       
             navigate('/');
           } catch (error) {
