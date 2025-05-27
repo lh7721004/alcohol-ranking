@@ -1,6 +1,8 @@
 import { useSojuStore } from "../store/useSojuStore"
 import { useBeerStore } from "../store/useBeerStore"
+import { useQRStore } from "../store/useQRStore"
 import { useNavigate } from "react-router-dom"
+import axios from "axios";
 
 export default function BottleInputPage(){
     const navigate = useNavigate();
@@ -8,6 +10,15 @@ export default function BottleInputPage(){
     const setSojuCount = useSojuStore((state) => state.setSojuCount);
     const beerCount = useBeerStore((state) => state.beerCount);
     const setBeerCount = useBeerStore((state) => state.setBeerCount);
+    const setQRcode = useQRStore((state)=>state.setQRcode);
+    const setQRTime = useQRStore((state)=>state.setQRTime);
+    const createQR = ()=>{
+        axios.post("http://localhost:5000/api/admin/qr/make",{soju:sojuCount,beer:beerCount}).then((response)=>{
+            setQRcode(response.data.qrdata);
+            setQRTime(new Date(Date.now()));
+            navigate('/qr')
+        }).catch((reason)=>{});
+    }
     return (
     <div className="flex flex-col gap-5 p-5 w-full h-[100vh] justify-between">
         <div className="flex flex-col">
@@ -29,7 +40,7 @@ export default function BottleInputPage(){
                 </div>
             </div>
         </div>
-        <div className="w-full bg-[#F7CAA0] rounded-xl text-center py-1 font-semibold cursor-pointer">QR 생성하기</div>
+        <div className="w-full bg-[#F7CAA0] rounded-xl text-center py-1 font-semibold cursor-pointer" onClick={createQR}>QR 생성하기</div>
     </div>
     )
 }
